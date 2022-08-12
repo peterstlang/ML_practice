@@ -12,3 +12,11 @@ import PIL
 import PIL.Image
 import tensorflow as tf
 import tensorflow_datasets as tfds
+
+def main():
+    ds, info = tfds.load('mnist', split='train', with_info=True)
+    fig = tfds.show_examples(ds, info)
+    
+
+if __name__ == "__main__":
+    main()
