@@ -75,8 +75,7 @@ def fit_model(model, ds_train, ds_test):
     )
 
 def train_model(ds_train, ds_test):
-    model = create_model()
-    print(model)
+    model = create_compile_model()
     model = fit_model(model, ds_train, ds_test)
     return model
     
