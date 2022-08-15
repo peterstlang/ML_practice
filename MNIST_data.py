@@ -6,10 +6,6 @@ Created on Thu Aug 11 23:06:35 2022
 """
 
 #import 
-import numpy as np
-import os
-import PIL
-import PIL.Image
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
@@ -80,14 +76,13 @@ def train_model(ds_train, ds_test):
     return model
     
 
-def main():
+def splits():
     ds_train, ds_test, ds_info = load_mnist()
     ds_train = transform_MNIST_train(ds_train, ds_info)
     ds_test = transform_MNIST_test(ds_test)
     
-    model = train_model(ds_train, ds_test)
     
-    return model
+    return ds_train, ds_test
 
 if __name__ == "__main__":
-    main()
+    splits()
