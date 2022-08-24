@@ -26,7 +26,7 @@ def load_dataset(dataset='mnist'):
     else:
         print("{} is not a valid dataset!".format(dataset))
         
-def iterate_examples(ds=ds, num_examples=3):
+def iterate_examples(ds, num_examples=3):
     ds = ds.take(num_examples)
     
     for example in ds:
@@ -35,7 +35,7 @@ def iterate_examples(ds=ds, num_examples=3):
         label = example["label"]
         print(image.shape, label)
     
-def benchmark(ds=ds, batch_size=32):
+def benchmark(ds, batch_size=32):
     ds = ds.batch(batch_size).prefetch(1)
 
     tfds.benchmark(ds, batch_size=batch_size)
