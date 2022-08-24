@@ -35,11 +35,22 @@ def iterate_examples(ds=ds, num_examples=3):
         label = example["label"]
         print(image.shape, label)
     
+def benchmark(ds=ds, batch_size=32):
+    ds = ds.batch(batch_size).prefetch(1)
+
+    tfds.benchmark(ds, batch_size=batch_size)
+    tfds.benchmark(ds, batch_size=batch_size)
 
 if __name__ == "__main__":
 
-    ds = load_dataset()
-    iterate_examples(num_examples=10)
+    #ds = load_dataset()
+    #iterate_examples(num_examples=10)
+    #benchmark(batch_size=64)
+    ds, info = tfds.load('mnist', split='train', with_info=True)
+
+    df = tfds.as_dataframe(ds.take(1), info)
+    
+
     
     
     
